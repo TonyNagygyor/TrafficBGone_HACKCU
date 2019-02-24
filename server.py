@@ -9,7 +9,7 @@ def time_with_trafic(r):
 def time_normal(r):
     return (r.json()['rows'][0]['elements'][0]['duration_in_traffic']['value'])
 
-@route('/hello')
+@route('/')
 def hello():
     return static_file('/Home.html', root = './')
 
@@ -21,13 +21,15 @@ def error505(error):
 def get_time():
     origin = request.forms.get('origin')
     destination = request.forms.get('destination')
+    early_arival = request.forms.get('early')
+    late_arival = request.forms.get('late')
     r = requests.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin + '&destinations=' + destination + '&departure_time=1551020400&key=' + api_key)
     if(r.json()['status'] != 'OK'):
         print('warning invalid query')
         return(error505('invalid query'))
     time = time_with_trafic(r)
     #return time
-    return 'It will take ' , str(time), ' second to go from ' + origin + ' to ' + destination
+    return f'It will take {time} seconds to go from {origin} to {destination}'
 
 api_key = os.environ['APIKEY']
 if api_key == '':
