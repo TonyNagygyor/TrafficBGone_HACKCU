@@ -26,6 +26,7 @@ def get_time():
         print('warning invalid query')
         return(error505('invalid query'))
     time = time_with_trafic(r)
+    return 'It will take ' + time + ' second to go from ' + origin + ' to ' + destination 
     
 api_key = os.environ['APIKEY']
 if api_key == '':
