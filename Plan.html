@@ -3,27 +3,30 @@
 <head>
 <style>
 html * {
-  font-family: Garamond !important;
-  font-size: 20px
+  font-family: Tahoma !important;
 }
 p {
   border: 1px solid dodgerblue;
   padding: 30px;
   margin: 25px;
 }
-.right {
+a {
+  color: #00b36b;
+  font-size: 16px;
+  padding: 10px;
+}
+.left {
   position: absolute;
   border: 5px solid dodgerblue;
-  right: 0px;
+  left: 0px;
   padding: 5px;
 }
-a:hover {
-  color: purple;
-  background-color: transparent;
-  text-decoration: underline;
-}
 body {background-color: powderblue;
-  font-size: 20px}
+  background-image: url("SnowBG2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 18px}
 h1   {color: blue;}
 </style>
 <title>TrafficBGone</title>
@@ -31,11 +34,12 @@ h1   {color: blue;}
 </head>
 <h2> Plan your trip!</h2>
 <body>
-  <h3> Plan your trip!</h3>
   <form action='get_time' method='post'>
           Starting Location: <input id="origin" type="text" name="origin" value="" />
           <br>
+          <br>
           Ending Location: <input id="destination" type="text" name="destination" value="" />
+          <br>
           <br>
           Earliest Arrival Time: <select id="earlyHour" type="text" name="earlyHour" value="">
             <option value = "1">1</option>
@@ -62,6 +66,7 @@ h1   {color: blue;}
             <option value = "PM">PM</option>
           </select>
           <br>
+          <br>
           Latest Arrival Time: <select id="lateHour" type="text" name="lateHour" value="">
             <option value = "1">1</option>
             <option value = "2">2</option>
@@ -87,6 +92,7 @@ h1   {color: blue;}
             <option value = "PM">PM</option>
           </select>
           <br>
+          <br>
           Day of Travel <select id="Day" type="text" name="Day" value="">
             <option value = "4">Monday</option>
             <option value = "5">Tuesday</option>
@@ -97,10 +103,9 @@ h1   {color: blue;}
             <option value = "3">Sunday</option>
           </select>
           <br>
+          <br>
           <input type="submit" value="Let's Go!">
       </form>
-      <p>Leaving at X time will get you to your destination at Y
-        <br>
-        You will earn Z reward points for this trip</p>
-<div class="right"><div class="gmap_canvas"><iframe width="706" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Eisenhower%20Tunnel&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.jetzt-drucken-lassen.de">website</a></div><style>.mapouter{text-align:right;height:250px;width:706px;}.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:706px;}</style>Google Maps by <a href="https://www.embedgooglemap.net" rel="nofollow" target="_blank">Embedgooglemap.net</a></div>
+      <br>
+<div class="left"><div class="gmap_canvas"><iframe width="706" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Eisenhower%20Tunnel&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.jetzt-drucken-lassen.de">website</a></div><style>.mapouter{text-align:right;height:250px;width:706px;}.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:706px;}</style>Google Maps by <a href="https://www.embedgooglemap.net" rel="nofollow" target="_blank">Embedgooglemap.net</a></div>
 </html>
