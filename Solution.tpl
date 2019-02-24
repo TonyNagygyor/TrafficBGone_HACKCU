@@ -20,5 +20,6 @@ h1   {color: blue;}
 </head>
 <body>
       <h1>Time to Destination {{timeToDest}}!</h1>
+      <img src="static/ride.png">
       <p>Points earned {{points}}</p>
 </html>
