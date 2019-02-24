@@ -1,4 +1,4 @@
-from bottle import route, run, error, post, static_file, request
+from bottle import route, run, error, post, static_file, request, template
 import requests
 import os
 
@@ -28,8 +28,8 @@ def get_time():
         print('warning invalid query')
         return(error505('invalid query'))
     time = time_with_trafic(r)
-    #return time
-    return f'It will take {time} seconds to go from {origin} to {destination}'
+    strTime = str(int(time/3600)) + " Hours " + str(int((time/60))%60) + " Minutes " + str(time%60) + " Seconds "
+    return template('Solution.tpl', timeToDest=strTime)
 
 api_key = os.environ['APIKEY']
 if api_key == '':
