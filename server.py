@@ -113,4 +113,4 @@ if api_key == '':
 data = load_data()
 print(data)
 
-run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=80, debug=True)

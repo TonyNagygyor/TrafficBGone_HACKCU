@@ -22,6 +22,7 @@ body {background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  color: white;
 }
 h1   {color: blue;}
 </style>
