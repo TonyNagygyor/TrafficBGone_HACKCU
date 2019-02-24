@@ -13,104 +13,26 @@ p {
   margin: 25px;
 }
 a {
+  color: #17FFA3;
   font-size: 16px;
+  padding: 10px;
 }
-.right {
-  position: absolute;
-  border: 5px solid dodgerblue;
-  right: 0px;
-  padding: 5px;
+body {background-color: white;
+  background-image: url("Road.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
 }
-a:hover {
-  color: purple;
-  background-color: transparent;
-  text-decoration: underline;
-}
-body {background-color: powderblue;
-  font-size: 20px}
 h1   {color: blue;}
 </style>
 <title>TrafficBGone</title>
 <a href="Home.html">Home Page</a>     <a href="Rewards.html">Rewards</a>
 </head>
-<h2> Plan your trip!</h2>
-<body>
-  <form action='get_time' method='post'>
-          Starting Location: <input id="origin" type="text" name="origin" value="" />
-          <br>
-          <br>
-          Ending Location: <input id="destination" type="text" name="destination" value="" />
-          <br>
-          <br>
-          Earliest Arrival Time: <select id="earlyHour" type="text" name="earlyHour" value="">
-            <option value = "1">1</option>
-            <option value = "2">2</option>
-            <option value = "3">3</option>
-            <option value = "4">4</option>
-            <option value = "5">5</option>
-            <option value = "6">6</option>
-            <option value = "7">7</option>
-            <option value = "8">8</option>
-            <option value = "9">9</option>
-            <option value = "10">10</option>
-            <option value = "11">11</option>
-            <option value = "12">12</option>
-          </select>
-          :<select id="earlyMin" type="text" name="earlyMin" value="">
-            <option value = "00">00</option>
-            <option value = "15">15</option>
-            <option value = "30">30</option>
-            <option value = "45">45</option>
-          </select>
-          <select id="earlyAMPM" type="text" name="earlyAMPM" value="">
-            <option value = "AM">AM</option>
-            <option value = "PM">PM</option>
-          </select>
-          <br>
-          <br>
-          Latest Arrival Time: <select id="lateHour" type="text" name="lateHour" value="">
-            <option value = "1">1</option>
-            <option value = "2">2</option>
-            <option value = "3">3</option>
-            <option value = "4">4</option>
-            <option value = "5">5</option>
-            <option value = "6">6</option>
-            <option value = "7">7</option>
-            <option value = "8">8</option>
-            <option value = "9">9</option>
-            <option value = "10">10</option>
-            <option value = "11">11</option>
-            <option value = "12">12</option>
-          </select>
-          :<select id="lateMin" type="text" name="lateMin" value="">
-            <option value = "00">00</option>
-            <option value = "15">15</option>
-            <option value = "30">30</option>
-            <option value = "45">45</option>
-          </select>
-          <select id="lateAMPM" type="text" name="lateAMPM" value="">
-            <option value = "AM">AM</option>
-            <option value = "PM">PM</option>
-          </select>
-          <br>
-          <br>
-          Day of Travel <select id="Day" type="text" name="Day" value="">
-            <option value = "4">Monday</option>
-            <option value = "5">Tuesday</option>
-            <option value = "6">Wednesday</option>
-            <option value = "0">Thursday</option>
-            <option value = "1">Friday</option>
-            <option value = "2">Saturday</option>
-            <option value = "3">Sunday</option>
-          </select>
-          <br>
-          <br>
-          <input type="submit" value="Let's Go!">
-      </form>
-            <h1>Time to Destination {{timeToDest}}!</h1>
-            <img src="static/ride.png">
-            <p>Depature Time: {{departureTime}}</p>
-            <p>Arrival Time: {{arrivalTime}}</p>
-            <p>Points earned {{points}}</p>
+    <h1>Time to Destination {{timeToDest}}!</h1>
+    <img src="static/ride.png">
+    <p>Depature Time: {{departureTime}}</p>
+    <p>Arrival Time: {{arrivalTime}}</p>
+    <p>Points earned {{points}}</p>
 <div class="right"><div class="gmap_canvas"><iframe width="706" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Eisenhower%20Tunnel&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.jetzt-drucken-lassen.de">website</a></div><style>.mapouter{text-align:right;height:250px;width:706px;}.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:706px;}</style>Google Maps by <a href="https://www.embedgooglemap.net" rel="nofollow" target="_blank">Embedgooglemap.net</a></div>
 </html>
