@@ -20,5 +20,7 @@ h1   {color: blue;}
 </head>
 <body>
       <h1>Time to Destination {{timeToDest}}!</h1>
+      <p>Depature Time: {{departureTime}}</p>
+      <p>Arrival Time: {{arrivalTime}}</p>
       <p>Points earned {{points}}</p>
 </html>
