@@ -19,3 +19,10 @@ def hello():
     return "Hello World!"
 
 run(host='localhost', port=8080, debug=True)
+
+@post('/get_time')
+def get_time():
+    origin = request.forms.get('origin')
+    destination = request.forms.get('destination')
+    r = requests.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin + '&destinations=' + destination + '&departure_time=1551020400&key=' + api_key)
+    print(r.text)
