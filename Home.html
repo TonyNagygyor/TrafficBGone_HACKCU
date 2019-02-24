@@ -4,6 +4,7 @@
 <style>
 html * {
   font-family: Garamond !important;
+  font-size: 20px
 }
 p {
   border: 1px solid dodgerblue;
@@ -30,12 +31,11 @@ h1   {color: blue;}
 </head>
 <h2> Plan your trip!</h2>
 <body>
+  <h3> Plan your trip!</h3>
   <form action='get_time' method='post'>
           Starting Location: <input id="origin" type="text" name="origin" value="" />
           <br>
-          <br>
           Ending Location: <input id="destination" type="text" name="destination" value="" />
-          <br>
           <br>
           Earliest Arrival Time: <select id="earlyHour" type="text" name="earlyHour" value="">
             <option value = "1">1</option>
@@ -62,7 +62,6 @@ h1   {color: blue;}
             <option value = "PM">PM</option>
           </select>
           <br>
-          <br>
           Latest Arrival Time: <select id="lateHour" type="text" name="lateHour" value="">
             <option value = "1">1</option>
             <option value = "2">2</option>
@@ -88,6 +87,15 @@ h1   {color: blue;}
             <option value = "PM">PM</option>
           </select>
           <br>
+          Day of Travel <select id="Day" type="text" name="Day" value="">
+            <option value = "4">Monday</option>
+            <option value = "5">Tuesday</option>
+            <option value = "6">Wednesday</option>
+            <option value = "0">Thursday</option>
+            <option value = "1">Friday</option>
+            <option value = "2">Saturday</option>
+            <option value = "3">Sunday</option>
+          </select>
           <br>
           <input type="submit" value="Let's Go!">
       </form>
