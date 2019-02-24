@@ -1,4 +1,4 @@
-from bottle import route, run, error, post, static_file, request
+from bottle import route, run, error, post, static_file, request, template
 import requests
 import os
 
@@ -33,20 +33,37 @@ def error505(error):
 def get_time():
     origin = request.forms.get('origin')
     destination = request.forms.get('destination')
-    early_arival = request.forms.get('early')
-    late_arival = request.forms.get('late')
-    r = requests.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin + '&destinations=' + destination + '&arrival_time=1551020400&key=' + api_key)
-    print(r.text)
+    early_arrivalHour = request.forms.get('earlyHour')
+    late_arrivalHour = request.forms.get('lateHour')
+    early_arrivalAMPM = request.forms.get('earlyAMPM')
+    late_arrivalAMPM = request.forms.get('lateAMPM')
+    early_arrivalMin = request.forms.get('earlyMin')
+    late_arrivalMin = request.forms.get('lateMin')
+    day = request.forms.get('Day')
+    departure_time = -1
+
+    if(early_arrivalAMPM == "AM"):
+        early_arrival_24hours = 12 + int(early_arrivalHour)
+        early_arrival = int(str(early_arrival_24hours) + early_arrivalMin)
+    else:
+        early_arrival = int(earlyHour + early_arrivalMin)
+    if(late_arrivalAMPM == "AM"):
+        late_arrival_24hours = 12 + int(late_arrivalHour)
+        late_arrival = int(str(late_arrival_24hours) + late_arrivalMin)
+        departure_time = 3600 * late_arrival_24hours + int(late_arrivalMin) * 60 + 86400*int(day) + 1614236400 #Time to midnight on a random Thursday in the future
+    else:
+        late_arrival = int(lateHour + late_arrivalMin)
+
+
+    r = requests.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin + '&destinations=' + destination + '&departure_time='+ str(departure_time) + '&key=' + api_key)
     if(r.json()['status'] != 'OK'):
         print('warning invalid query')
         return(error505('invalid query'))
-    try:
-        time = time_with_trafic(r)
-    except KeyError:
-        time = time_normal(r)
-    leave_time = generate_time(early_arival, late_arival, time)
-    r = requests.get(f'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins={origin}&destinations={destination}&departure_time={leave_time}&key=' + api_key)
-    return f'You are scheduled to leave artIt will take {time // 60} minutes to go from {origin} to {destination}'
+    time = time_with_trafic(r)
+
+    strTime = str(int(time/3600)) + " Hours " + str(int((time/60))%60) + " Minutes " + str(time%60) + " Seconds "
+    points = (int(late_arrival)-int(early_arrival))
+    return template('Solution.tpl', timeToDest=strTime, points = str(points))
 
 api_key = os.environ['APIKEY']
 if api_key == '':
