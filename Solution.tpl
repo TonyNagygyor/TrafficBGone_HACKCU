@@ -20,5 +20,5 @@ h1   {color: blue;}
 </head>
 <body>
       <h1>Time to Destination {{timeToDest}}!</h1>
-      <p>How are you?</p>
+      <p>Points earned {{points}}</p>
 </html>

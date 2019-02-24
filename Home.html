@@ -2,6 +2,10 @@
 <html lang = "en-us">
 <head>
 <style>
+html * {
+  font-family: Garamond !important;
+  font-size: 20px
+}
 p {
   border: 1px solid dodgerblue;
   padding: 30px;
@@ -9,24 +13,84 @@ p {
 }
 .right {
   position: absolute;
-  border: 10px solid dodgerblue;
+  border: 5px solid dodgerblue;
   right: 0px;
   padding: 5px;
 }
 body {background-color: powderblue;}
 h1   {color: blue;}
 </style>
+<title>TrafficBGone</title>
 </head>
 <body>
-  <h4> What? <h4>
+  <h3> Plan your trip!</h3>
   <form action='get_time' method='post'>
-          Starting Location:<input id="origin" type="text" name="origin" value="" />
+          Starting Location: <input id="origin" type="text" name="origin" value="" />
           <br>
-          Ending Location:<input id="destination" type="text" name="destination" value="" />
-          Earliest Arrival Time:<input id="early" type="text" name="early" value="" />
+          Ending Location: <input id="destination" type="text" name="destination" value="" />
           <br>
-          Latest Arrival Time:<input id="late" type="text" name="late" value="" />
-          <input type="submit">
+          Earliest Arrival Time: <select id="earlyHour" type="text" name="earlyHour" value="">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">5</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+            <option value = "11">11</option>
+            <option value = "12">12</option>
+          </select>
+          :<select id="earlyMin" type="text" name="earlyMin" value="">
+            <option value = "00">00</option>
+            <option value = "15">15</option>
+            <option value = "30">30</option>
+            <option value = "45">45</option>
+          </select>
+          <select id="earlyAMPM" type="text" name="earlyAMPM" value="">
+            <option value = "AM">AM</option>
+            <option value = "PM">PM</option>
+          </select>
+          <br>
+          Latest Arrival Time: <select id="lateHour" type="text" name="lateHour" value="">
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+            <option value = "5">5</option>
+            <option value = "6">6</option>
+            <option value = "7">7</option>
+            <option value = "8">8</option>
+            <option value = "9">9</option>
+            <option value = "10">10</option>
+            <option value = "11">11</option>
+            <option value = "12">12</option>
+          </select>
+          :<select id="lateMin" type="text" name="lateMin" value="">
+            <option value = "00">00</option>
+            <option value = "15">15</option>
+            <option value = "30">30</option>
+            <option value = "45">45</option>
+          </select>
+          <select id="lateAMPM" type="text" name="lateAMPM" value="">
+            <option value = "AM">AM</option>
+            <option value = "PM">PM</option>
+          </select>
+          <br>
+          Day of Travel <select id="Day" type="text" name="Day" value="">
+            <option value = "Monday">Monday</option>
+            <option value = "Tuesday">Tuesday</option>
+            <option value = "Wednesday">Wednesday</option>
+            <option value = "Thursday">Thursday</option>
+            <option value = "Friday">Friday</option>
+            <option value = "Saturday">Saturday</option>
+            <option value = "Sunday">Sunday</option>
+
+          </select>
+          <br>
+          <input type="submit" value="Let's Go!">
       </form>
 <div class="right"><div class="gmap_canvas"><iframe width="706" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Eisenhower%20Tunnel&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.jetzt-drucken-lassen.de">website</a></div><style>.mapouter{text-align:right;height:250px;width:706px;}.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:706px;}</style>Google Maps by <a href="https://www.embedgooglemap.net" rel="nofollow" target="_blank">Embedgooglemap.net</a></div>
 </html>
