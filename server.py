@@ -27,7 +27,12 @@ def generate_time(early_arival, late_arival, current_time):
 
 @route('/')
 def index():
-    return static_file('Home.html', root = './')
+    return static_file('/Home.html', root = './')
+
+@route('/<filename>')
+def server_static(filename):
+    print(filename)
+    return static_file(filename, root='./')
 
 @route('/static/<filename>')
 def server_static(filename):
@@ -55,6 +60,7 @@ def get_time():
     temp_garbo = []
     for i in range(len(data[1])):
         temp_garbo.append(f'{data[0][i]}:{data[1][i]}')
+        print(f'{data[0][i]}:{data[1][i]} {data[2][i]}')
 
     pl.plot(temp_garbo, data[2], 'r')
     pl.xlabel("Time")
@@ -97,15 +103,14 @@ def get_time():
 
 
     strTime = str(int(time/3600)) + " Hours " + str(int((time/60))%60) + " Minutes " + str(time%60) + " Seconds "
-    departure_time = departure_time%86400
-    departure_time = str(int(departure_time/3600)) + str(int((time/60))%60)
     points = (int(late_arrival_time)-int(early_arrival_time))
-    return template('Solution.tpl', timeToDest=strTime, points = str(points), arrivalTime = str(1), departureTime = departure_time)
+    return template('Solution.tpl', timeToDest=strTime, points = str(points), arrivalTime = str(1), departureTime = str(1))
 
 api_key = os.environ['APIKEY']
 if api_key == '':
     print('ERROR NO API KEY')
     quit()
 data = load_data()
+print(data)
 
 run(host='localhost', port=8080, debug=True)
