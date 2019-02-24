@@ -18,9 +18,11 @@ h1   {color: blue;}
 </style>
 </head>
 <body>
-  <form action='cgi-bin/hello2.py' method='post'>
-          <label for="Start Location:"></label>
-          <input id="startingLocation" type="text" startLoc="startingLocation" value="" />
+  <h4> What? <h4>
+  <form action='get_time' method='post'>
+          Starting Location:<input id="origin" type="text" name="origin" value="" />
+          <br>
+          Ending Location:<input id="destination" type="text" name="destination" value="" />
           <input type="submit">
       </form>
 <div class="right"><div class="gmap_canvas"><iframe width="706" height="250" id="gmap_canvas" src="https://maps.google.com/maps?q=Eisenhower%20Tunnel&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.jetzt-drucken-lassen.de">website</a></div><style>.mapouter{text-align:right;height:250px;width:706px;}.gmap_canvas {overflow:hidden;background:none!important;height:250px;width:706px;}</style>Google Maps by <a href="https://www.embedgooglemap.net" rel="nofollow" target="_blank">Embedgooglemap.net</a></div>
