@@ -89,9 +89,9 @@ def get_time():
         print('warning invalid query')
         return(error505('invalid query'))
     time = time_normal(r)
+    arrival_time_sec = departure_time
     departure_time = departure_time - time
-    arrival_time_sec = 1614236000
-    while(arrival_time_sec < early_arrival_seconds and arrival_time_sec > late_arrival_seconds):
+    while(arrival_time_sec > early_arrival_seconds and arrival_time_sec < late_arrival_seconds):
         r = requests.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=' + origin + '&destinations=' + destination + '&departure_time='+ str(departure_time) + '&key=' + api_key)
         if(r.json()['status'] != 'OK'):
             print('warning invalid query')
@@ -99,18 +99,19 @@ def get_time():
         time = time_with_trafic(r)
         #departure_time = departure_time - 300
         arrival_time_sec = departure_time + time
-        departure_time = departure_time + 300
+        departure_time = departure_time + 3000
 
-
+    ArrivalTime = ''
+    DepartureTime = ''
     strTime = str(int(time/3600)) + " Hours " + str(int((time/60))%60) + " Minutes " + str(time%60) + " Seconds "
-    if(departure_time%60 < 10):
-        DepartureTime = str(int((departure_time%86400)/3600))+ '0' +str((departure_time%60))
+    if(int(((departure_time%86400)%3600)/60) < 10):
+        DepartureTime = str(int((departure_time%86400)/3600))+ ':0' +str(int(((departure_time%86400)%3600)/60))
     else:
-        DepartureTime = str(int((departure_time%86400)/3600))+str((departure_time%60))
-    if(arrival_time_sec%60 < 10):
-        ArrirvalTime = str(int((arrival_time_sec%86400)/3600))+ '0' +str((arrival_time_sec%60))
+        DepartureTime = str(int((departure_time%86400)/3600))+ ':' +str(int(((departure_time%86400)%3600)/60))
+    if(int(((arrival_time_sec%86400)%3600)/60) < 10):
+        ArrivalTime = str(int((arrival_time_sec%86400)/3600))+ ':0' +str(int(((arrival_time_sec%86400)%3600)/60))
     else:
-        ArrivalTime = str(int((arrival_time_sec%86400)/3600))+str((arrival_time_sec%60))
+        ArrivalTime = str(int((arrival_time_sec%86400)/3600))+ ':' +str(int(((arrival_time_sec%86400)%3600)/60))
     points = (int(late_arrival_time)-int(early_arrival_time))
     return template('Solution.tpl', timeToDest=strTime, points = str(points), arrivalTime = ArrivalTime, departureTime = DepartureTime)
 
