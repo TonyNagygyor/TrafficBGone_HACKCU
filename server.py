@@ -105,6 +105,5 @@ if api_key == '':
     print('ERROR NO API KEY')
     quit()
 data = load_data()
-print(data)
 
-run(host='0.0.0.0', port=80, debug=True)
+run(host='localhost', port=8080, debug=True)
