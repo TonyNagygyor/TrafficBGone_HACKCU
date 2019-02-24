@@ -103,8 +103,16 @@ def get_time():
 
 
     strTime = str(int(time/3600)) + " Hours " + str(int((time/60))%60) + " Minutes " + str(time%60) + " Seconds "
+    if(departure_time%60 < 10):
+        DepartureTime = str(int((departure_time%86400)/3600))+ '0' +str((departure_time%60))
+    else:
+        DepartureTime = str(int((departure_time%86400)/3600))+str((departure_time%60))
+    if(arrival_time_sec%60 < 10):
+        ArrirvalTime = str(int((arrival_time_sec%86400)/3600))+ '0' +str((arrival_time_sec%60))
+    else:
+        ArrivalTime = str(int((arrival_time_sec%86400)/3600))+str((arrival_time_sec%60))
     points = (int(late_arrival_time)-int(early_arrival_time))
-    return template('Solution.tpl', timeToDest=strTime, points = str(points), arrivalTime = str(1), departureTime = str(1))
+    return template('Solution.tpl', timeToDest=strTime, points = str(points), arrivalTime = ArrivalTime, departureTime = DepartureTime)
 
 api_key = os.environ['APIKEY']
 if api_key == '':
